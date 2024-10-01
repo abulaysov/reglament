@@ -1,0 +1,150 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+body {
+    display: flex;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Fixed Sidebar styling */
+.sidebar {
+    width: 250px;
+    background-color: #1a202c;
+    padding: 20px;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.sidebar .logo h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.menu {
+    list-style-type: none;
+}
+
+.menu li {
+    margin-bottom: 20px;
+}
+
+.menu li a {
+    color: #cbd5e0;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.menu li a:hover {
+    color: #63b3ed;
+}
+
+/* Main content styling with margin-left for sidebar */
+.main-content {
+    margin-left: 270px;
+    padding: 40px;
+    background-color: #fff;
+    width: calc(100% - 270px);
+}
+
+/* Terminal-style container */
+pre {
+    background-color: #0a192f;
+    color: #f7fafc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    position: relative;
+}
+
+/* Terminal header with buttons */
+pre::before {
+    content: '';
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    gap: 8px;
+}
+
+pre::before::after,
+pre::before::before,
+pre::before span {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+pre::before::before {
+    background-color: #ff5f56; /* Red button */
+}
+
+pre::before::after {
+    background-color: #ffbd2e; /* Yellow button */
+    margin-left: 8px;
+}
+
+pre::before span {
+    background-color: #27c93f; /* Green button */
+    margin-left: 16px;
+}
+
+/* Python or command-like syntax */
+pre code {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff; /* Ensure text is white */
+}
+
+pre code .command {
+    color: #61dafb; /* Light Blue */
+}
+
+pre code .option {
+    color: #ff6c6b; /* Light Red */
+}
+
+pre code .parameter {
+    color: #abb2bf; /* Gray */
+}
+
+pre code .string {
+    color: #e5c07b; /* Yellow */
+}
+
+pre code .flag {
+    color: #56b6c2; /* Cyan */
+}
+
+pre code .operator {
+    color: #e06c75; /* Red */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 20px;
+    }
+}

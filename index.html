@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Регламент</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>Оглавление</h1>
+            </div>
+            <ul class="menu">
+                <li><a href="#introduction">Введение</a></li>
+                <li><a href="#structure-of-project">Структура проекта</a></li>
+                <li><a href="#naming-objects">Именование объектов</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <section id="introduction">
+                <h2>Введение</h2>
+                <p>Регламент для проекта "Детские сады"</p>
+            </section>
+            <br>
+            <br>
+            <section id="structure-of-project">
+                <h2>Структура проекта</h2>
+                <br>
+                <ul>
+                    <b>
+                    <li>Ниже приведена структура построения приложения</li>
+                    </b>
+
+                    <pre><code class="python">
+└── users
+    ├── __init__.py
+    ├── admin.py
+    ├── api
+    │   ├── __init__.py
+    │   └── v1
+    │       ├── __init__.py
+    │       ├── filters.py
+    │       ├── permissions.py
+    │       ├── serializers
+    │       │   ├── __init__.py
+    │       │   ├── user.py
+    │       │   └── document.py
+    │       ├── paginations.py
+    │       ├── throttling.py
+    │       ├── urls.py
+    │       └── views.py
+    ├── apps.py
+    ├── constants.py
+    ├── migrations
+    ├── models
+    │   ├── __init__.py
+    │   ├── choices.py
+    │   ├── fields.py
+    │   ├── managers.py
+    │   ├── user.py
+    │   └── document.py
+    ├── services
+    │   ├── __init__.py
+    │   ├── user_create.py
+    ├── tests
+    │   ├── __init__.py
+    │   ├── api
+    │   │   ├── v1
+    │   │   │   ├── __init__.py
+    │   │   │   └── test_user.py
+    │   ├── models
+    │   │   ├── __init__.py
+    │   │   ├── test_user.py
+    │   ├── celery
+    │   │   ├── __init__.py
+    │   │   ├── test_tasks.py
+    │   └── factories.py
+    ├── utils.py
+    └── validators.py
+                </code></pre>
+                </ul>
+                                <ul>
+                    <b>
+                    <li>Описание структры</li>
+                    </b>
+
+                    <pre><code class="python">
+1. Приложения именуются во множественном числе.
+
+2. Модули DRF'a выносятся в пакет api.
+
+3. API версионируется.
+
+4. Сериализаторы располагаются в пакете конкретной версии API,
+для каждой модели создается модуль именем модели,
+в котором содержатся все сериализаторы для этой модели,
+сериализаторы для которых нет моделей, создаются в модуле serializers.py
+Все сериализаторы импортируются в пакет serializers, т.е. в __init__.py
+
+5. Константы располагаются в constants.py
+
+6. Модели, чойсы, менеджеры и кастомные поля располагаются
+в пакете models.py и импортируются в __init__.py
+Для каждой модели создается отдельный модуль с именем модели
+
+7. Сервисы располагаются в пакете services и импортируются в __init__.py
+
+8. Тесты располагаются в пакете tests, тесты делятся на API, models и celery
+API делится на версии
+
+9. Фабрики располагаются в корне пакета tests
+
+10. Вспомогательные функции находятся в utils.py
+
+11. Валидаторы находятся в validators.py
+                </code></pre>
+                </ul>
+            </section>
+            <br>
+            <br>
+             <section id="naming-objects">
+                 <h2>Именование объектов</h2>
+            <br>
+
+                 <b>- Сериализаторы (Где Object целевой объект)</b>
+                <pre>
+                    <code>
+class ObjectListSerializer(serializer.ModelSerializer):  # Для получения списка объектов
+    pass
+
+class ObjectListSerializer(serializer.ModelSerializer):  # Для получения списка объектов
+    pass
+
+class ObjectDetailSerializer(serializer.ModelSerializer):  # Для получения списка объектов
+    pass
+
+class ObjectCreateSerializer(serializer.ModelSerializer):  # Для получения списка объектов
+    pass
+
+class ObjectUpdateSerializer(serializer.ModelSerializer):  # Для получения списка объектов
+    pass
+
+class ObjectAnotherObjectCreateSerializer(serializer.ModelSerializer):  # Для создания объекта связанной сущности
+    pass
+                    </code>
+                </pre>
+                                  <b>- Сервисы (Где Object целевой объект)</b>
+<pre>
+    <code>
+class ObjectCreateService:
+    pass
+    </code>
+</pre>
+                                   <b>- Чойсы (Где Object целевой объект)</b>
+<pre>
+    <code>
+class ObjectStatusChoices:
+    pass
+    </code>
+</pre>
+                                  <b>- Абстрактная модель (Где Object целевой объект)</b>
+<pre>
+    <code>
+class AbstractObjectModel
+    pass
+    </code>
+</pre>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>
